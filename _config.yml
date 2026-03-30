@@ -9,6 +9,7 @@ description: >
   Technical blog by Muhammad Hamza covering Networking, Security, and IT topics.
 
 url: "https://raohamzaanwar.github.io"
+baseurl: ""
 
 github:
   username: raohamzaanwar
