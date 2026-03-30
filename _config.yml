@@ -1,5 +1,5 @@
 theme: jekyll-theme-chirpy
-baseurl: ""
+baseurl: ""  # Keep empty since it's a user site
 lang: en
 timezone: Asia/Karachi
 
@@ -9,7 +9,6 @@ description: >
   Technical blog by Muhammad Hamza covering Networking, Security, and IT topics.
 
 url: "https://raohamzaanwar.github.io"
-baseurl: ""
 
 github:
   username: raohamzaanwar
