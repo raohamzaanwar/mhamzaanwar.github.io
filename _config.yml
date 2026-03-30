@@ -1,5 +1,5 @@
 theme: jekyll-theme-chirpy
-baseurl: ""  # Keep empty since it's a user site
+baseurl: ""         # keep empty for user/organization site
 lang: en
 timezone: Asia/Karachi
 
@@ -28,6 +28,7 @@ comments:
   provider: none
 
 paginate: 10
+
 sass:
   style: compressed
 
