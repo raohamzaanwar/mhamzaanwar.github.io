@@ -1,42 +1,33 @@
-theme: jekyll-theme-chirpy
-baseurl: ""         # keep empty for user/organization site
-lang: en
-timezone: Asia/Karachi
+name: Build and deploy Jekyll site
 
-title: Muhammad Hamza
-tagline: Aspiring Cybersecurity Enthusiast
-description: >
-  Technical blog by Muhammad Hamza covering Networking, Security, and IT topics.
+on:
+  push:
+    branches:
+      - main  # change if your default branch is different
 
-url: "https://raohamzaanwar.github.io"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-github:
-  username: raohamzaanwar
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.3
 
-social:
-  name: Muhammad Hamza
-  email: hamzaanwarrao@gmail.com
-  links:
-    - https://github.com/raohamzaanwar
-    - https://www.linkedin.com/in/m-hamza-anwar/
+      - name: Install Bundler
+        run: gem install bundler
 
-theme_mode: light
-avatar: /assets/img/personal/hamza.jpg
-toc: true
+      - name: Install gems
+        run: bundle install
 
-comments:
-  provider: none
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
 
-paginate: 10
-
-sass:
-  style: compressed
-
-exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - tools
-  - README.md
-  - CHANGELOG.md
-  - LICENSE
-  - node_modules
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
